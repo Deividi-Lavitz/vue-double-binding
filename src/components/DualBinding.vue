@@ -1,14 +1,23 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+
+const textValue = ref('');
+
 function inputHandle(event: Event) {
   const textBox = event.currentTarget as HTMLInputElement;
-  console.log(textBox.valeu);
+  textValue.value = textBox.value;
 }
 </script>
 
 <template>
   <div>
-    <input type="text" placeholde="Type your name" @input="inputHandle" />
-    <span></span>
+    <input
+      type="text"
+      placeholder="Type your name"
+      @input="inputHandle"
+      :value="textValue"
+    />
+    <span>{{ textValue }}</span>
   </div>
 </template>
 
